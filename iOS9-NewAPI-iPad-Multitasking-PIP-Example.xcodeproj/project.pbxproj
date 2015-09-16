@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E084D0F1BA8A6740026DEB6 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E084D0E1BA8A6740026DEB6 /* MovieCollectionViewCell.swift */; };
+		7E084D141BA8A7400026DEB6 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E084D131BA8A7400026DEB6 /* MovieViewModel.swift */; };
 		7E3F61831BA7A22A00072B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F61821BA7A22A00072B94 /* AppDelegate.swift */; };
-		7E3F61851BA7A22A00072B94 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F61841BA7A22A00072B94 /* FirstViewController.swift */; };
-		7E3F61871BA7A22A00072B94 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F61861BA7A22A00072B94 /* SecondViewController.swift */; };
 		7E3F618A1BA7A22A00072B94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3F61881BA7A22A00072B94 /* Main.storyboard */; };
 		7E3F618C1BA7A22A00072B94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3F618B1BA7A22A00072B94 /* Assets.xcassets */; };
 		7E3F618F1BA7A22A00072B94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3F618D1BA7A22A00072B94 /* LaunchScreen.storyboard */; };
+		7E3F61971BA7A3F200072B94 /* MoviesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F61961BA7A3F200072B94 /* MoviesCollectionViewController.swift */; };
+		7E3F61991BA7AA7000072B94 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3F61981BA7AA7000072B94 /* MovieDetailViewController.swift */; };
+		7E5CA7031BA8E7A3007DD920 /* AVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CA7021BA8E7A3007DD920 /* AVPViewController.swift */; };
+		7E5CA7051BA8F0AF007DD920 /* WKPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CA7041BA8F0AF007DD920 /* WKPlayerViewController.swift */; };
+		7EB471EC1BA89209002ABA55 /* MoviesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB471EB1BA89209002ABA55 /* MoviesLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E084D0E1BA8A6740026DEB6 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCollectionViewCell.swift; path = App/Views/MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E084D131BA8A7400026DEB6 /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieViewModel.swift; path = App/ViewsModels/MovieViewModel.swift; sourceTree = "<group>"; };
 		7E3F617F1BA7A22A00072B94 /* iOS9-NewAPI-iPad-Multitasking-PIP-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS9-NewAPI-iPad-Multitasking-PIP-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3F61821BA7A22A00072B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E3F61841BA7A22A00072B94 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		7E3F61861BA7A22A00072B94 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		7E3F61891BA7A22A00072B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E3F618B1BA7A22A00072B94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E3F618E1BA7A22A00072B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E3F61901BA7A22A00072B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E3F61961BA7A3F200072B94 /* MoviesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoviesCollectionViewController.swift; path = App/Controllers/MoviesCollectionViewController.swift; sourceTree = "<group>"; };
+		7E3F61981BA7AA7000072B94 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailViewController.swift; path = App/Controllers/MovieDetailViewController.swift; sourceTree = "<group>"; };
+		7E5CA7021BA8E7A3007DD920 /* AVPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVPViewController.swift; path = App/Controllers/AVPViewController.swift; sourceTree = "<group>"; };
+		7E5CA7041BA8F0AF007DD920 /* WKPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WKPlayerViewController.swift; path = App/Controllers/WKPlayerViewController.swift; sourceTree = "<group>"; };
+		7EB471EB1BA89209002ABA55 /* MoviesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoviesLibrary.swift; path = App/Models/MoviesLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E084D101BA8A6E40026DEB6 /* ViewsModels */ = {
+			isa = PBXGroup;
+			children = (
+				7E084D131BA8A7400026DEB6 /* MovieViewModel.swift */,
+			);
+			name = ViewsModels;
+			sourceTree = "<group>";
+		};
 		7E3F61761BA7A22A00072B94 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +74,68 @@
 		7E3F61811BA7A22A00072B94 /* iOS9-NewAPI-iPad-Multitasking-PIP-Example */ = {
 			isa = PBXGroup;
 			children = (
+				7E3F619A1BA7AA8100072B94 /* App */,
+			);
+			path = "iOS9-NewAPI-iPad-Multitasking-PIP-Example";
+			sourceTree = "<group>";
+		};
+		7E3F619A1BA7AA8100072B94 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7E084D101BA8A6E40026DEB6 /* ViewsModels */,
+				7E3F619B1BA7AA8900072B94 /* Root */,
+				7EB471EA1BA891DE002ABA55 /* Models */,
+				7EB471ED1BA894AF002ABA55 /* Views */,
+				7E3F619C1BA7AA9100072B94 /* Controllers */,
+				7E3F619D1BA7AA9B00072B94 /* Ressources */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		7E3F619B1BA7AA8900072B94 /* Root */ = {
+			isa = PBXGroup;
+			children = (
 				7E3F61821BA7A22A00072B94 /* AppDelegate.swift */,
-				7E3F61841BA7A22A00072B94 /* FirstViewController.swift */,
-				7E3F61861BA7A22A00072B94 /* SecondViewController.swift */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		7E3F619C1BA7AA9100072B94 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E3F61961BA7A3F200072B94 /* MoviesCollectionViewController.swift */,
+				7E3F61981BA7AA7000072B94 /* MovieDetailViewController.swift */,
+				7E5CA7021BA8E7A3007DD920 /* AVPViewController.swift */,
+				7E5CA7041BA8F0AF007DD920 /* WKPlayerViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7E3F619D1BA7AA9B00072B94 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
 				7E3F61881BA7A22A00072B94 /* Main.storyboard */,
 				7E3F618B1BA7A22A00072B94 /* Assets.xcassets */,
 				7E3F618D1BA7A22A00072B94 /* LaunchScreen.storyboard */,
 				7E3F61901BA7A22A00072B94 /* Info.plist */,
 			);
-			path = "iOS9-NewAPI-iPad-Multitasking-PIP-Example";
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+		7EB471EA1BA891DE002ABA55 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7EB471EB1BA89209002ABA55 /* MoviesLibrary.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7EB471ED1BA894AF002ABA55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E084D0E1BA8A6740026DEB6 /* MovieCollectionViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +169,11 @@
 				TargetAttributes = {
 					7E3F617E1BA7A22A00072B94 = {
 						CreatedOnToolsVersion = 7.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -137,9 +213,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E3F61871BA7A22A00072B94 /* SecondViewController.swift in Sources */,
+				7E5CA7031BA8E7A3007DD920 /* AVPViewController.swift in Sources */,
+				7E3F61991BA7AA7000072B94 /* MovieDetailViewController.swift in Sources */,
+				7E3F61971BA7A3F200072B94 /* MoviesCollectionViewController.swift in Sources */,
+				7E084D141BA8A7400026DEB6 /* MovieViewModel.swift in Sources */,
+				7E084D0F1BA8A6740026DEB6 /* MovieCollectionViewCell.swift in Sources */,
+				7E5CA7051BA8F0AF007DD920 /* WKPlayerViewController.swift in Sources */,
+				7EB471EC1BA89209002ABA55 /* MoviesLibrary.swift in Sources */,
 				7E3F61831BA7A22A00072B94 /* AppDelegate.swift in Sources */,
-				7E3F61851BA7A22A00072B94 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +370,7 @@
 				7E3F61951BA7A22A00072B94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

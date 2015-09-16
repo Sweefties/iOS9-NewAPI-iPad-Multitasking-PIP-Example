@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        /// REQUIRED FOR PIP!!!
+        /// After active Audio/Airplay Background Mode in General Settings.
+        /// Setup Audio Session for Picture in Picture
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+        }
+        catch {
+            print("handle errors setting Audio session Category")
+        }
+        
+        
         return true
     }
 
