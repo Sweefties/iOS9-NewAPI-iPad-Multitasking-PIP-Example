@@ -72,17 +72,8 @@ extension UIForMovieDetails {
                     }
                 }
             })
-            /*DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
-                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
-                    image = UIImage(data: data)!
-                    
-                    DispatchQueue.main.async {
-                        self.movieThumbnail.image = image
-                    }
-                }
-                
-            })*/
         }
+        
         /// button interface
         self.movieButton.layer.cornerRadius = movieButton.frame.size.width / 2
         self.movieButton.layer.masksToBounds = true

@@ -73,16 +73,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
                     }
                 }
             })
-            /*DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
-                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
-                    image = UIImage(data: data)
-                    
-                    DispatchQueue.main.async {
-                        self.thumbnail.image = image
-                    }
-                }
-                
-            })*/
         }
         
         self.titleLabel.textColor = delegate?.titleColor
