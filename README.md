@@ -25,6 +25,11 @@ iOS 9~ Experiments - New API Components - Multitasking on iPad with Picture-in-P
 Tested on iOS 9.1 Simulators. 50%
 
 
+## Important
+
+Get the `master` branch for XCode 8 / Swift 3 updated project.
+
+
 ## Sources
 WWDC 2015 Sessions from : [WWDC 2015 Videos](https://developer.apple.com/videos/wwdc/2015/)
 Jamie XX - Loud Places (feat. Romy) from : [youtube.com](https://youtu.be/TP9luRtEqjc)
