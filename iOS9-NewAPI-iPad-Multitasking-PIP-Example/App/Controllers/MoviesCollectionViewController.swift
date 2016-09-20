@@ -17,8 +17,8 @@ class MoviesCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     dynamic var dataArray = [MoviesLibrary]()
 
-    private let reuseIdentifier = "Cell"
-    private let segueIdentifier = "ShowDetailForMovie"
+    fileprivate let reuseIdentifier = "Cell"
+    fileprivate let segueIdentifier = "ShowDetailForMovie"
     
     
     // MARK: - Lifecycle
@@ -38,39 +38,39 @@ typealias MoviesAVPlayerVCPipDelegate = MoviesCollectionViewController
 extension MoviesAVPlayerVCPipDelegate : AVPlayerViewControllerDelegate {
     
     /// playerViewController will start PIP
-    func playerViewControllerWillStartPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerWillStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP will start")
     }
     
     /// playerViewController did start PIP
-    func playerViewControllerDidStartPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP did start")
     }
     
     /// playerViewController will stop PIP
-    func playerViewControllerWillStopPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerWillStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP will stop")
     }
     
     /// playerViewController did stop PIP
-    func playerViewControllerDidStopPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP did stop")
     }
     
     /// playerViewController failed to start PIP
-    func playerViewController(playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: NSError) {
+    func playerViewController(_ playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: Error) {
         print("PIP Error : \(error.localizedDescription)")
     }
     
     /// playerViewController automatically dismiss at PIP Start.
-    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(playerViewController: AVPlayerViewController) -> Bool {
+    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
         return false
     }
     
     /// playerViewController restore Interface For PIP
-    func playerViewController(playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: (Bool) -> Void) {
+    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
         
-        presentViewController(playerViewController, animated: true) {
+        present(playerViewController, animated: true) {
             print("PIP restore process loading..")
             completionHandler(true)
         }
@@ -93,21 +93,21 @@ typealias MoviesCollectionDataSource = MoviesCollectionViewController
 extension MoviesCollectionDataSource {
     
     /// Number of Sections
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     /// Number of Items
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataArray.count ?? 0
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataArray.count 
     }
     
     /// Cell for Item
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
         
-        guard let movie : MoviesLibrary = dataArray[indexPath.item] as MoviesLibrary else { print("no value") }
+        guard let movie = dataArray[(indexPath as NSIndexPath).item] as MoviesLibrary? else { print("no value") }
         // Configure the cell
         let viewModel = MovieViewModel()
         cell.configure(withDataSource: movie, delegate: viewModel)
@@ -122,8 +122,8 @@ typealias MoviesCollectionDelegate = MoviesCollectionViewController
 extension MoviesCollectionDelegate {
     
     /// Did Select Item
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(segueIdentifier, sender: self)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: segueIdentifier, sender: self)
     }
 }
 
@@ -133,9 +133,9 @@ typealias MoviesNavigation = MoviesCollectionViewController
 extension MoviesNavigation {
     
     /// Navigation Segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == segueIdentifier) {
-            if let row = self.collectionView?.indexPathsForSelectedItems()?.first?.row, let detailViewController = segue.destinationViewController as? MovieDetailViewController {
+            if let row = (self.collectionView?.indexPathsForSelectedItems?.first as NSIndexPath?)?.row, let detailViewController = segue.destination as? MovieDetailViewController {
                 detailViewController.movieObject = dataArray[row]
             }
         }

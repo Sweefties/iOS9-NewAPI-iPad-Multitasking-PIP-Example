@@ -16,6 +16,6 @@ struct MovieViewModel: MovieTextCellDataSource {
 extension MovieViewModel: MovieTextCellDelegate {
     
     var titleColor: UIColor {
-        return .whiteColor()
+        return UIColor.white
     }
 }

@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/build-pass-brightgreen.svg?style=flat-square)
 ![](https://img.shields.io/badge/platform-iOS9+-ff69b4.svg?style=flat-square)
-![](https://img.shields.io/badge/Require-XCode7-lightgrey.svg?style=flat-square)
+![](https://img.shields.io/badge/Require-XCode8-lightgrey.svg?style=flat-square)
 
 
 # iOS 9 - New API - iPad Multitasking - PiP Example
@@ -17,12 +17,17 @@ iOS 9~ Experiments - New API Components - Multitasking on iPad with Picture-in-P
 
 ## Requirements
 
-- >= XCode 7.0 / 7.1 beta~. (writed with xcode 7.1 beta)
-- >= Swift 2.
+- >= XCode 8.0.
+- >= Swift 3.
 - >= iOS 9.0.
 - >= iPad Mini 3 / 4, iPad Air / Air 2, iPad Pro
 
 Tested on iOS 9.1 Simulators. 50%
+
+
+## Important
+
+this is the Xcode 8 / Swift updated project.
 
 
 ## Sources

@@ -40,11 +40,11 @@ extension UIPIPAVPInterface {
     /// Player View Rendered and Play!
     func setUIRendered() {
         // layout player
-        playerVC.view.frame = CGRectMake(0, 64, 768, 432)
+        playerVC.view.frame = CGRect(x: 0, y: 64, width: 768, height: 432)
         self.view.addSubview(playerVC.view)
         
         // prepare the player
-        playerVC.player = AVPlayer(URL: NSURL(string: urlToStream)!)
+        playerVC.player = AVPlayer(url: URL(string: urlToStream)!)
         
         // present the player is playing
         playerVC.player?.play()
@@ -58,34 +58,34 @@ private typealias PIPAVPlayerVCDelegate = AVPViewController
 extension PIPAVPlayerVCDelegate : AVPlayerViewControllerDelegate {
     
     /// playerViewController will start PIP
-    func playerViewControllerWillStartPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerWillStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP will start")
         pictureInPicureIsActive = true
     }
     
     /// playerViewController did start PIP
-    func playerViewControllerDidStartPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP did start")
     }
     
     /// playerViewController will stop PIP
-    func playerViewControllerWillStopPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerWillStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP will stop")
     }
     
     /// playerViewController did stop PIP
-    func playerViewControllerDidStopPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP did stop")
     }
     
     /// playerViewController failed to start PIP
-    func playerViewController(playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: NSError) {
+    func playerViewController(_ playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: Error) {
         pictureInPicureIsActive = false
         print("PIP Error : \(error.localizedDescription)")
     }
     
     /// playerViewController restore Interface For PIP
-    func playerViewController(playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: (Bool) -> Void) {
+    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
         print("PIP restore process loading..")
         completionHandler(true)
     }

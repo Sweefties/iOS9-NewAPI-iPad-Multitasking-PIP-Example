@@ -21,23 +21,23 @@ protocol MovieTextCellDelegate {
 extension MovieTextCellDelegate {
     
     var titleColor: UIColor {
-        return .lightGrayColor()
+        return UIColor.lightGray
     }
     
     var textColor: UIColor {
-        return .blackColor()
+        return UIColor.black
     }
     
     var font: UIFont {
-        return .systemFontOfSize(16)
+        return .systemFont(ofSize: 16)
     }
 }
 
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
-    private var delegate: MovieTextCellDelegate?
-    private var dataObject: MoviesLibrary?
+    fileprivate var delegate: MovieTextCellDelegate?
+    fileprivate var dataObject: MoviesLibrary?
     
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -45,7 +45,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLabel?.textColor = .lightGrayColor()
+        self.titleLabel?.textColor = UIColor.lightGray
     }
     
     /**
@@ -64,16 +64,25 @@ class MovieCollectionViewCell: UICollectionViewCell {
         /// CAUTION : You must preferred one helper class with performed methods (by example : cache, NSURLSession, NSURLResponse.. and MANAGE CACHE MEMORY!!!)
         var image = UIImage(named: "first")
         if let imgUrl = dataObject.thumbnailUrl as String? {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                if let data = NSData(contentsOfURL: NSURL(string: imgUrl)!) {
+            DispatchQueue.global(qos: .userInteractive).async(execute: {
+                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
                     image = UIImage(data: data)
                     
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
+                        self.thumbnail.image = image
+                    }
+                }
+            })
+            /*DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
+                    image = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
                         self.thumbnail.image = image
                     }
                 }
                 
-            })
+            })*/
         }
         
         self.titleLabel.textColor = delegate?.titleColor

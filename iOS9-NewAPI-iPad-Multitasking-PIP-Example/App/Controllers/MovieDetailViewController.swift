@@ -49,7 +49,7 @@ extension UIForMovieDetails {
     /// rendered view
     func setUIComponents() {
         /// object
-        guard let movie : MoviesLibrary = movieObject as MoviesLibrary else { print("no value") }
+        guard let movie = movieObject as MoviesLibrary? else { print("no value") }
         
         /// string url for player
         currentMovieUrl = movie.movieUrl
@@ -60,18 +60,28 @@ extension UIForMovieDetails {
         
         /// image interface (only for this demo project)
         /// CAUTION : You must preferred one helper class with performed methods (by example : cache, NSURLSession, NSURLResponse.. and MANAGE CACHE MEMORY!!!)
-        var image = UIImage?()
+        var image = UIImage()
         if let imgUrl = movie.thumbnailUrl as String? {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                if let data = NSData(contentsOfURL: NSURL(string: imgUrl)!) {
-                    image = UIImage(data: data)
+            
+            DispatchQueue.global(qos: .userInteractive).async(execute: {
+                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
+                    image = UIImage(data: data)!
                     
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
+                        self.movieThumbnail.image = image
+                    }
+                }
+            })
+            /*DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+                if let data = try? Data(contentsOf: URL(string: imgUrl)!) {
+                    image = UIImage(data: data)!
+                    
+                    DispatchQueue.main.async {
                         self.movieThumbnail.image = image
                     }
                 }
                 
-            })
+            })*/
         }
         /// button interface
         self.movieButton.layer.cornerRadius = movieButton.frame.size.width / 2
@@ -86,11 +96,11 @@ typealias AVPlayerVCActions = MovieDetailViewController
 extension AVPlayerVCActions {
     
     /// play movie in modal
-    @IBAction func playMovie(sender: AnyObject) {
+    @IBAction func playMovie(_ sender: AnyObject) {
         if !currentMovieUrl.isEmpty {
-            playerVC.player = AVPlayer(URL: NSURL(string: currentMovieUrl)!)
-            presentViewController(playerVC, animated: true) { () -> Void in
-                playerVC.player?.play()
+            playerVC.player = AVPlayer(url: URL(string: currentMovieUrl)!)
+            present(playerVC, animated: true) { () -> Void in
+                self.playerVC.player?.play()
             }
         }
     }
@@ -102,41 +112,41 @@ private typealias PIPAVPlayerVCDelegate = MovieDetailViewController
 extension PIPAVPlayerVCDelegate : AVPlayerViewControllerDelegate {
     
     /// playerViewController will start PIP
-    func playerViewControllerWillStartPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerWillStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP will start")
         pictureInPicureIsActive = true
     }
     
     /// playerViewController did start PIP
-    func playerViewControllerDidStartPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP did start")
     }
     
     /// playerViewController will stop PIP
-    func playerViewControllerWillStopPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerWillStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP will stop")
     }
     
     /// playerViewController did stop PIP
-    func playerViewControllerDidStopPictureInPicture(playerViewController: AVPlayerViewController) {
+    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
         print("PIP did stop")
     }
     
     /// playerViewController failed to start PIP
-    func playerViewController(playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: NSError) {
+    func playerViewController(_ playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: Error) {
         pictureInPicureIsActive = false
         print("PIP Error : \(error.localizedDescription)")
     }
     
     /// playerViewController automatically dismiss at PIP Start.
-    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(playerViewController: AVPlayerViewController) -> Bool {
+    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
         return false
     }
     
     /// playerViewController restore Interface For PIP
-    func playerViewController(playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: (Bool) -> Void) {
+    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
         
-        presentViewController(playerViewController, animated: true) {
+        present(playerViewController, animated: true) {
             print("PIP restore process loading..")
             completionHandler(true)
         }

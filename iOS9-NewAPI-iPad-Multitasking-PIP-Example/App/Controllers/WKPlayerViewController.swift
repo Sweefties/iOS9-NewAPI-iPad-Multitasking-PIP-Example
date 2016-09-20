@@ -38,7 +38,7 @@ typealias UIByWebKit = WKPlayerViewController
 extension UIByWebKit {
     
     /// To set the WebKit webView
-    private func setWebView() -> WKWebView {
+    fileprivate func setWebView() -> WKWebView {
         let v = WKWebView()
         v.navigationDelegate = self
         
@@ -54,8 +54,8 @@ extension UIByWebKit {
         let views = ["webView": webView]
         webView.translatesAutoresizingMaskIntoConstraints = false
         /// add constraints manually
-        self.webContainer.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[webView]|", options: .AlignAllCenterX, metrics: nil, views: views))
-        self.webContainer.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[webView]|", options: .AlignAllCenterY, metrics: nil, views: views))
+        self.webContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[webView]|", options: .alignAllCenterX, metrics: nil, views: views))
+        self.webContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[webView]|", options: .alignAllCenterY, metrics: nil, views: views))
         
         /// set html code to embed Html5 youtube video
         let htmlUrl = "<html><head><body style=\"(margin:0;padding:0;)\"><div class=\"h_iframe\"><iframe webkit-playsinline height=\"540\" width=\"950\" src=\"\(urlToLoad)?feature=player_detailpage&playsinline=1\" allowfullscreen></iframe></div></body></html>"
@@ -70,29 +70,29 @@ extension UIByWebKit {
 typealias UIByWebKitNavDelegate = WKPlayerViewController
 extension UIByWebKitNavDelegate: WKNavigationDelegate {
 
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        print("Navigation Action: \(navigationAction.request.URL!.absoluteString)")
-        decisionHandler(.Allow)
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        print("Navigation Action: \(navigationAction.request.url!.absoluteString)")
+        decisionHandler(.allow)
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        print("Navigation Response: \(navigationResponse.response.MIMEType!)")
-        decisionHandler(.Allow)
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        print("Navigation Response: \(navigationResponse.response.mimeType!)")
+        decisionHandler(.allow)
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("fail navigation: \(error.localizedDescription)")
     }
     
-    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print("fail provisional navigation: \(error.localizedDescription)")
     }
     
-    func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         print("did commit navigation")
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("did finish navigation")
     }
     
